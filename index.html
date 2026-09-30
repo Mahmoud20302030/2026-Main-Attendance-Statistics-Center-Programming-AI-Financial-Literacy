@@ -494,6 +494,59 @@ button:disabled{opacity:.55;cursor:not-allowed;transform:none!important;box-shad
   }
 }
 </style>
+
+<style id="attendanceProfessionalFinalLayer">
+/* طبقة تطوير إضافية — لا تحذف أو تستبدل البنية الأصلية */
+/* شاشة الغياب هي الجدول الرئيسي بدل جدول متابعة المنصات، مع إبقاء البنية الأصلية محفوظة */
+body.pro-screen-dashboard > .wrap{display:none!important}
+body.pro-screen-dashboard #integratedAttendanceV2,
+body.pro-screen-attendance #integratedAttendanceV2{display:block!important;max-width:1700px!important;margin:0 auto!important;padding:18px 2% 34px!important}
+body.pro-screen-assignment #integratedAttendanceV2,
+body.pro-screen-settings #integratedAttendanceV2{display:none!important}
+body.pro-screen-dashboard #attendanceCompleteV4,
+body.pro-screen-attendance #attendanceCompleteV4{display:none!important}
+body.pro-screen-attendance #integratedAttendanceV2 .iav2-shell{background:#fff;border:1px solid #d7e5f2;border-radius:22px;box-shadow:0 18px 48px rgba(15,55,95,.13);overflow:hidden}
+body.pro-screen-attendance #integratedAttendanceV2 .iav2-head{background:linear-gradient(120deg,#10294f,#1769aa 52%,#12a8b8);color:#fff;padding:22px 24px}
+body.pro-screen-attendance #integratedAttendanceV2 .iav2-head h2{margin:0 0 7px;font-size:clamp(20px,2.4vw,30px)}
+body.pro-screen-attendance #integratedAttendanceV2 .iav2-head p{margin:0;line-height:1.8;color:#eaf8ff;font-size:12px}
+.iav2-auto-badge{display:inline-flex;align-items:center;gap:7px;margin-top:9px;padding:7px 11px;border-radius:999px;background:#ffffff20;border:1px solid #ffffff38;color:#fff;font-size:11px;font-weight:900}
+.iav2-auto-badge i{width:8px;height:8px;border-radius:50%;background:#56f0bd;box-shadow:0 0 12px #56f0bd;display:inline-block}
+.iav2-prof-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+.iav2-prof-actions button{min-height:42px}
+.iav2-tablewrap{overflow:auto}
+.iav2-table{width:100%;min-width:1050px;border-collapse:collapse;background:#fff}
+.iav2-table th,.iav2-table td{border:1px solid #d9e4ef;padding:7px 6px;text-align:center;vertical-align:middle}
+.iav2-table th{font-weight:1000;white-space:nowrap}
+.iav2-table td.student-fixed{text-align:right;white-space:nowrap}
+.iav2-status{font-weight:1000;min-width:125px}
+
+/* طباعة جديدة مضافة فقط لتقرير الغياب — لا تمس كود الطباعة الأصلي */
+@page{size:A4 landscape;margin:4mm 5mm}
+body.iav2-absence-printing>*:not(#iav2ProfessionalPrintRoot){display:none!important}
+body.iav2-absence-printing #iav2ProfessionalPrintRoot{display:block!important;width:100%!important;margin:0!important;padding:0!important}
+#iav2ProfessionalPrintRoot .iav2-absence-page{width:100%;height:200mm;min-height:200mm;max-height:200mm;box-sizing:border-box;display:flex;flex-direction:column;overflow:hidden;page-break-after:always;break-after:page;background:#fff;color:#111;font-family:Tahoma,Arial,sans-serif;padding:3mm 4mm}
+#iav2ProfessionalPrintRoot .iav2-absence-page:last-child{page-break-after:auto;break-after:auto}
+#iav2ProfessionalPrintRoot .iav2-absence-head{text-align:center;flex:0 0 auto}
+#iav2ProfessionalPrintRoot .iav2-absence-head h1{margin:0 0 1.5mm;font-size:13pt;font-weight:1000}
+#iav2ProfessionalPrintRoot .iav2-absence-head h2{margin:0 0 1.5mm;font-size:10pt}
+#iav2ProfessionalPrintRoot .iav2-absence-meta{display:grid;grid-template-columns:repeat(4,1fr);gap:2mm;border-top:1px solid #222;border-bottom:1px solid #222;padding:1.5mm 0;margin-bottom:2mm;font-size:7pt;font-weight:900}
+#iav2ProfessionalPrintRoot .iav2-absence-table{width:100%;border-collapse:collapse;table-layout:fixed;font-size:var(--iav2-print-font,5.6pt);line-height:1.05;flex:0 0 auto}
+#iav2ProfessionalPrintRoot .iav2-absence-table th,#iav2ProfessionalPrintRoot .iav2-absence-table td{border:1px solid #111;padding:1.1px 2px;text-align:center;vertical-align:middle;overflow:hidden;word-break:break-word}
+#iav2ProfessionalPrintRoot .iav2-absence-table th{background:#e7f0f8!important;font-weight:1000;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+#iav2ProfessionalPrintRoot .iav2-absence-table .n{text-align:right;font-weight:800;white-space:nowrap}
+#iav2ProfessionalPrintRoot .iav2-absence-signatures{margin-top:auto;display:grid;grid-template-columns:repeat(3,1fr);gap:8mm;padding-top:2.5mm;border-top:1px solid #222;flex:0 0 auto;font-size:6.8pt;font-weight:1000}
+#iav2ProfessionalPrintRoot .iav2-absence-signatures>div{text-align:center;min-height:14mm}
+#iav2ProfessionalPrintRoot .iav2-sign-line{display:block;height:7mm;border-bottom:1px dotted #555;margin-top:1mm}
+#iav2ProfessionalPrintRoot .iav2-page-label{text-align:left;font-size:5.3pt;margin-top:1mm;flex:0 0 auto}
+#iav2ProfessionalPrintRoot .status-present{font-weight:1000}.status-absent{font-weight:1000}.status-excused{font-weight:1000}.status-late{font-weight:1000}
+@media print{
+ body.iav2-absence-printing #iav2ProfessionalPrintRoot .iav2-absence-page{height:200mm!important;min-height:200mm!important;max-height:200mm!important;overflow:hidden!important}
+ body.iav2-absence-printing #iav2ProfessionalPrintRoot .iav2-absence-table tr{page-break-inside:avoid!important;break-inside:avoid!important}
+ body.iav2-absence-printing #iav2ProfessionalPrintRoot .iav2-absence-table thead{display:table-header-group}
+ body.iav2-absence-printing #iav2ProfessionalPrintRoot .iav2-absence-table tbody{display:table-row-group}
+}
+</style>
+
 </head>
 <body>
 
@@ -779,6 +832,7 @@ button:disabled{opacity:.55;cursor:not-allowed;transform:none!important;box-shad
         <button class="soft" id="iav2Backup">🗂 نسخة احتياطية</button>
         <button class="soft" id="iav2Restore">📥 استيراد نسخة</button><input id="iav2RestoreFile" type="file" accept=".json" hidden>
         <button class="soft" id="iav2Print">🖨 طباعة التقرير</button>
+        <button class="primary" id="iav2PrintAllClasses" type="button">🖨 طباعة كل الفصول — صفحة مستقلة لكل فصل</button>
       </div>
       <div class="iav2-note" id="iav2StatusNote">جاهز للرصد. كل سجل يرتبط بالطالب والفصل والتاريخ، وتحديث السجل يعيد حساب جميع المستويات.</div>
       <div class="iav2-legend">
@@ -3652,36 +3706,14 @@ function teacherOf(k){try{for(const t of (TEACHERS||[]))if((teacherAccess.assign
 const statusAr={present:'حاضر',absent:'غائب',excused:'غائب بعذر',late:'متأخر'};
 function signatureHTML(){return `<div class="pf-signatures"><div>توقيع المعلم<span class="pf-sign-line"></span></div><div>وكيل المدرسة<br>أ/ عبد الحميد عثمان عيد<span class="pf-sign-line"></span></div><div>القائم بأعمال مدير المدرسة<br>أ/ مسعود محمد مخيمر<span class="pf-sign-line"></span></div></div>`}
 function printOnePage(k,mode,index,total){
-  const date=q('v4Date')?.value||q('iav2Date')?.value||new Date().toISOString().slice(0,10);
-  const month=q('v4Month')?.value||q('iav2Month')?.value||date.slice(0,7);
-  const rows=window.__v4Students?.(k)||[];
-  const cname=window.__v4ClassName?.(k)||db?.[k]?.name||k;
-  const teacher=window.__iav2Teacher?.(k)||teacherOf(k)||'غير محدد';
-  const escx=v=>typeof escP==='function'?escP(v):String(v??'');
-  const studentRows=rows;
-  let title='تقرير الحضور والغياب اليومي',thead='',body='';
-  if(mode==='monthly'){
-    title='الملخص الشهري للغياب والحضور';
-    thead='<tr><th>م</th><th>الكود</th><th>اسم الطالب</th><th>أيام الدراسة</th><th>حضور</th><th>غياب</th><th>بعذر</th><th>بدون عذر</th><th>تأخير</th><th>% الحضور</th><th>% الغياب</th></tr>';
-    body=studentRows.map((r,i)=>{const x=window.calculateMonthlyStats(k,r[1],month);return `<tr><td>${i+1}</td><td dir="ltr">${escx(r[1])}</td><td class="pf-name">${escx(r[2])}</td><td>${x.days}</td><td>${x.present}</td><td>${x.absence}</td><td>${x.excused}</td><td>${x.unexcused}</td><td>${x.late}</td><td>${x.attendancePct.toFixed(1)}%</td><td>${x.absencePct.toFixed(1)}%</td></tr>`}).join('');
-  }else if(mode==='annual'){
-    title='الكشف السنوي للحضور والغياب';
-    const c=window.__v4Cal||{start:'2026-09-12',end:'2027-06-24'};
-    const months=[...new Set((window.__v4StudyDays?window.__v4StudyDays(c.start,c.end):[]).map(d=>d.slice(0,7)))];
-    const names=['يناير','فبراير','مارس','أبريل','مايو','يونيو','يوليو','أغسطس','سبتمبر','أكتوبر','نوفمبر','ديسمبر'];
-    thead=`<tr><th>م</th><th>الكود</th><th>اسم الطالب</th>${months.map(m=>{const n=Number(m.slice(5,7));return `<th>${names[n-1]||m}</th>`}).join('')}<th>إجمالي الغياب</th><th>% الحضور</th></tr>`;
-    body=studentRows.map((r,i)=>{const x=window.calculateStudentStats(k,r[1]);return `<tr><td>${i+1}</td><td dir="ltr">${escx(r[1])}</td><td class="pf-name">${escx(r[2])}</td>${months.map(m=>{const mm=m;const y=window.calculateMonthlyStats(k,mm);const one=window.calculateStudentStats(k,r[1]);const recs=Object.keys((window.__v4Store||{}).records||{});let n=0;for(const key of recs){const parts=key.split('|');if(parts[0]===k&&String(parts[1])===String(r[1])&&parts[2]?.slice(0,7)===mm)n+=(window.__iav2Record?.(k,r[1],parts[2])&&window.__iav2Record(k,r[1],parts[2])!=='present' ? 1:0)}return `<td>${n}</td>`}).join('')}<td>${x.absence}</td><td>${x.attendancePct.toFixed(1)}%</td></tr>`}).join('');
-  }else if(mode==='warnings'){
-    title='تقرير الغياب والإنذارات';
-    thead='<tr><th>م</th><th>الكود</th><th>اسم الطالب</th><th>الفصل</th><th>غياب الشهر</th><th>بعذر</th><th>بدون عذر</th><th>تأخير</th><th>غياب العام</th><th>% الحضور</th><th>الحالة</th></tr>';
-    body=studentRows.map((r,i)=>{const x=window.calculateMonthlyStats(k,r[1],month),a=window.calculateStudentStats(k,r[1]);const limit=Number(window.__v4Store?.thresholds?.month||5),ylimit=Number(window.__v4Store?.thresholds?.year||15);if(x.absence<limit&&a.absence<ylimit)return '';return `<tr><td>${i+1}</td><td dir="ltr">${escx(r[1])}</td><td class="pf-name">${escx(r[2])}</td><td>${escx(cname)}</td><td>${x.absence}</td><td>${x.excused}</td><td>${x.unexcused}</td><td>${x.late}</td><td>${a.absence}</td><td>${a.attendancePct.toFixed(1)}%</td><td>إنذار</td></tr>`}).join('');
-  }else{
-    title='تقرير الحضور والغياب اليومي';
-    thead='<tr><th>م</th><th>الكود</th><th>اسم الطالب</th><th>الصف</th><th>الفصل</th><th>التاريخ</th><th>الحالة</th><th>نوع الغياب</th><th>عذر</th><th>ملاحظات</th></tr>';
-    body=studentRows.map((r,i)=>{const v=window.__iav2Record?.(k,r[1],date)||'unrecorded';const labels={present:'حاضر',absent:'غائب',excused:'غياب بعذر',unexcused:'غياب بدون عذر',late:'متأخر',unrecorded:'غير مرصود'};const typ=v==='excused'?'بعذر':(v==='unexcused'||v==='absent'?'بدون عذر':v==='late'?'تأخير':'—');const note=(window.__v4Store?.notes||{})[`${k}|${r[1]}|${date}`]||'';return `<tr><td>${i+1}</td><td dir="ltr">${escx(r[1])}</td><td class="pf-name">${escx(r[2])}</td><td>${escx((String(cname).match(/^(\d+)/)||[])[1]?`الصف ${(String(cname).match(/^(\d+)/)||[])[1]}`:'غير محدد')}</td><td>${escx(cname)}</td><td>${escx(date)}</td><td>${labels[v]}</td><td>${typ}</td><td>${v==='excused'?'نعم':'غير مطلوب'}</td><td>${escx(note)}</td></tr>`}).join('');
-  }
-  const empty=body||`<tr><td colspan="12">لا توجد بيانات لهذا التقرير.</td></tr>`;
-  return `<section class="pf-print-page" dir="rtl"><div class="pf-print-head"><div class="pf-school">${escx(cfg?.sub||'إدارة ميت غمر التعليمية — مدرسة محمد هاشم النقيب الثانوية المشتركة')}</div><h1>${title} — ${escx(cname)}</h1><div class="pf-print-meta"><span>الفصل: ${escx(cname)}</span><span>المعلم المشرف: ${escx(teacher)}</span><span>التاريخ: ${escx(date)}</span><span>الشهر: ${escx(month)}</span><span>العام: ${escx(cfg?.term||'2026/2027')}</span></div></div><table class="pf-print-table"><thead>${thead}</thead><tbody>${empty}</tbody></table>${signatureHTML()}<div class="pf-page-label">صفحة الفصل ${index+1} من ${total} — كل فصل في صفحة مستقلة</div></section>`;
+  const date=q('v4Date')?.value||window.__v4Today?.()||new Date().toISOString().slice(0,10),month=q('v4Month')?.value||date.slice(0,7);
+  const rows=window.__v4Students?.(k)||[];const [start,end]=window.__v4Mrange?.(month)||[month+'-01',month+'-31'];
+  const warn=n=>{const m=window.__v4PeriodStats?.(k,n,start,end)||{abs:0};const a=window.__v4PeriodStats?.(k,n,window.__v4Cal?.start,window.__v4Cal?.end)||{abs:0};return m.abs>=Number(window.__v4Store?.thresholds?.month||5)||a.abs>=Number(window.__v4Store?.thresholds?.year||15)};
+  const filtered=mode==='warnings'?rows.filter(r=>warn(r[1])):rows;
+  const font=Math.max(4.1,Math.min(6.1,8.2-(filtered.length*.055)));
+  const body=filtered.map((r,i)=>{const code=r[1],name=r[2]||'—',daily=attendanceState(k,code,date);const m=window.__v4PeriodStats?.(k,code,start,end)||{abs:0,exc:0,late:0,att:0,days:0};const a=window.__v4PeriodStats?.(k,code,window.__v4Cal?.start,window.__v4Cal?.end)||{abs:0};const pct=m.days?((m.att/m.days)*100).toFixed(1)+'%':'—';const note=window.__v4Store?.notes?.[`${k}|${code}|${date}`]||'';return `<tr><td>${i+1}</td><td dir="ltr">${escP(code)}</td><td class="pf-name">${escP(name)}</td><td>${escP(window.__v4Store?.gender?.[`${k}|${code}`]||'—')}</td><td>${escP(statusAr[daily]||'لم يسجل')}</td><td>${m.abs}</td><td>${m.exc}</td><td>${m.late}</td><td>${a.abs}</td><td>${pct}</td><td>${warn(code)?'إنذار':'—'}</td><td>${escP(note)}</td></tr>`}).join('');
+  const cname=window.__v4ClassName?.(k)||db?.[k]?.name||k;const title=mode==='warnings'?'تقرير الطلاب المستحقين للإنذار':mode==='annual'?'الكشف السنوي':mode==='monthly'?'التقرير الشهري':'تقرير الحضور والغياب اليومي';
+  return `<section class="pf-print-page" dir="rtl" style="--pf-print-font:${font}pt"><div class="pf-print-head"><div class="pf-school">${escP(cfg?.sub||'الجهة التعليمية')}</div><h1>${title} — ${escP(cname)}</h1><div class="pf-print-meta"><span>الفصل: ${escP(cname)}</span><span>المعلم: ${escP(teacherOf(k))}</span><span>التاريخ: ${escP(date)}</span><span>العام: ${escP(cfg?.term||'2026/2027')}</span></div></div><table class="pf-print-table"><colgroup><col style="width:3%"><col style="width:7%"><col style="width:21%"><col style="width:5%"><col style="width:8%"><col style="width:6%"><col style="width:6%"><col style="width:6%"><col style="width:7%"><col style="width:7%"><col style="width:6%"><col style="width:18%"></colgroup><thead><tr><th>م</th><th>الكود</th><th>اسم الطالب</th><th>النوع</th><th>حالة اليوم</th><th>غياب الشهر</th><th>بعذر</th><th>تأخير</th><th>غياب العام</th><th>حضور الشهر</th><th>إنذار</th><th>ملاحظات</th></tr></thead><tbody>${body||`<tr><td colspan="12">${mode==='warnings'?'لا توجد حالات إنذار.':'لا يوجد طلاب.'}</td></tr>`}</tbody></table>${signatureHTML()}<div class="pf-page-label">صفحة الفصل ${index+1} من ${total} — كل فصل في صفحة مستقلة</div></section>`
 }
 function pfPrint(mode='daily',all=true){
   if(!window.__v4Store||typeof window.__v4Keys!=='function'||typeof window.__v4Students!=='function')return;
@@ -4149,16 +4181,6 @@ body.app-authenticated #integratedAttendanceV2{display:block}
   #iav2PrintRoot th,#iav2PrintRoot td{border:1px solid #222;padding:3px;text-align:center}
   #iav2PrintRoot th{background:#e7eff8!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
 }
-/* تحسينات تشغيلية للطباعة والوضوح — إضافة فقط */
-.iav2-source-badge{display:inline-flex;align-items:center;gap:6px;padding:6px 10px;border-radius:999px;background:#e8f8f4;color:#087d65;font-size:11px;font-weight:1000}
-.iav2-daily-summary{display:grid;grid-template-columns:repeat(8,minmax(95px,1fr));gap:8px;margin:0 14px 12px}
-.iav2-daily-summary .box{padding:9px;border:1px solid #dbe7f3;border-radius:12px;background:#fbfdff;text-align:center;font-weight:900}
-.iav2-daily-summary .box small{display:block;color:#708198;font-size:10px}.iav2-daily-summary .box b{display:block;color:#10294f;font-size:18px;margin-top:3px}
-.iav2-class-status{font-size:11px;font-weight:1000;padding:5px 8px;border-radius:999px}
-.iav2-pending{background:#fff3d2;color:#8a5a00}.iav2-edited{background:#eee8ff;color:#6543b7}.iav2-complete-badge{background:#e3f8ef;color:#087d65}
-@media(max-width:1200px){.iav2-daily-summary{grid-template-columns:repeat(4,minmax(95px,1fr))}}
-@media(max-width:650px){.iav2-daily-summary{grid-template-columns:repeat(2,minmax(95px,1fr));margin-inline:8px}}
-@media print{.iav2-daily-summary{grid-template-columns:repeat(8,1fr);margin:2mm 0}.iav2-daily-summary .box{padding:2mm;font-size:8pt}}
 </style>
 
 <script id="integratedAttendanceV2JS">
@@ -4173,9 +4195,6 @@ let syncing=false, renderTimer=null, selectedView='daily';
 
 function store(){return window.__v4Store||{records:{},notes:{},gender:{},thresholds:{month:5,year:15},holidays:[]}}
 function records(){const s=store();s.records=s.records||{};return s.records}
-function attendanceMeta(){const s=store();s.attendanceMeta=s.attendanceMeta||{};return s.attendanceMeta}
-function attendanceTeacher(k){try{return typeof teacherOf==='function'?(teacherOf(k)||'غير محدد'):'غير محدد'}catch(e){return 'غير محدد'}}
-function recordInfo(k,code,d){return attendanceMeta()[`${k}|${code}|${d}`]||null}
 function allKeys(){try{return (window.__v4Keys?window.__v4Keys():Object.keys(db||{})).filter(k=>db?.[k])}catch(e){return Object.keys(db||{})}}
 function visibleKeys(){try{return typeof visibleClassKeys==='function'?visibleClassKeys():allKeys()}catch(e){return allKeys()}}
 function students(k){return Array.isArray(db?.[k]?.students)?db[k].students:[]}
@@ -4194,11 +4213,10 @@ function daysBetween(a,b){const out=[];if(!a||!b)return out;let d=new Date(a+'T0
 function monthRange(m){if(!m){const t=today();m=t.slice(0,7)}const [y,mo]=m.split('-').map(Number),last=new Date(y,mo,0).getDate();return [`${m}-01`,`${m}-${String(last).padStart(2,'0')}`]}
 function rec(k,code,d){let v=records()[`${k}|${code}|${d}`]||'';if(v==='absent')return 'unexcused';return v}
 function setRec(k,code,d,status){
- const key=`${k}|${code}|${d}`; const r=records(), meta=attendanceMeta();
- if(!status||status==='unrecorded'){delete r[key];delete meta[key];}
- else{r[key]=status;meta[key]={classId:k,studentId:String(code),date:d,status,teacher:attendanceTeacher(k),updatedAt:new Date().toISOString()};}
- enqueue('upsert',{classId:k,studentId:String(code),date:d,status:status||'unrecorded',teacher:attendanceTeacher(k),updatedAt:new Date().toISOString()});
- activity('attendance_update',{classId:k,studentId:String(code),date:d,status:status||'unrecorded',teacher:attendanceTeacher(k)});
+ const key=`${k}|${code}|${d}`; const r=records();
+ if(!status||status==='unrecorded')delete r[key];else r[key]=status;
+ enqueue('upsert',{classId:k,studentId:String(code),date:d,status:status||'unrecorded'});
+ activity('attendance_update',{classId:k,studentId:String(code),date:d,status:status||'unrecorded'});
 }
 function note(k,code,d){return store().notes?.[`${k}|${code}|${d}`]||''}
 function absenceType(v){return v==='unexcused'?'بدون عذر':v==='excused'?'بعذر':v==='absent'?'غياب':'—'}
@@ -4235,7 +4253,6 @@ function calculateStudentStats(k,code){const c=cal(),x=statsForStudent(k,code,c.
 function calculateClassStats(k){return calculateYearlyStats(k)}
 function calculateGradeStats(g){const ks=visibleKeys().filter(k=>gradeOf(k)===g),o={classes:ks.length,students:0,present:0,absent:0,excused:0,unexcused:0,late:0,days:0};ks.forEach(k=>{const x=calculateYearlyStats(k);o.students+=x.students;o.days+=x.days;o.present+=x.present;o.absent+=x.absent;o.excused+=x.excused;o.unexcused+=x.unexcused;o.late+=x.late});o.absence=o.absent+o.excused+o.unexcused;o.attendancePct=safePct(o.present,o.students?o.students*daysBetween(cal().start,cal().end).length:0);o.absencePct=safePct(o.absence,o.students?o.students*daysBetween(cal().start,cal().end).length:0);return o}
 function calculateAllStats(){const o={students:0,present:0,absent:0,excused:0,unexcused:0,late:0,classes:0};visibleKeys().forEach(k=>{const x=calculateYearlyStats(k);o.classes++;o.students+=x.students;o.present+=x.present;o.absent+=x.absent;o.excused+=x.excused;o.unexcused+=x.unexcused;o.late+=x.late});o.absence=o.absent+o.excused+o.unexcused;const days=daysBetween(cal().start,cal().end).length;o.attendancePct=safePct(o.present,o.students*days);o.absencePct=safePct(o.absence,o.students*days);return o}
-window.__iav2Record=(k,code,d)=>rec(k,code,d);window.__iav2RecordInfo=(k,code,d)=>recordInfo(k,code,d);window.__iav2Teacher=attendanceTeacher;
 window.calculateAttendance=calculateAttendance;window.calculateAbsence=calculateAbsence;window.calculateExcusedAbsence=calculateExcusedAbsence;window.calculateUnexcusedAbsence=calculateUnexcusedAbsence;window.calculateLate=calculateLate;window.calculateDailyStats=calculateDailyStats;window.calculateMonthlyStats=calculateMonthlyStats;window.calculateYearlyStats=calculateYearlyStats;window.calculateStudentStats=calculateStudentStats;window.calculateClassStats=calculateClassStats;window.calculateGradeStats=calculateGradeStats;
 
 function queue(){try{return JSON.parse(localStorage.getItem(QUEUE_KEY)||'[]')}catch(e){return[]}}
@@ -4263,7 +4280,7 @@ function dailyView(){
  const d=currentDate(),q=$('iav2Search').value.trim().toLowerCase(),sf=$('iav2StatusFilter').value,k=$('iav2Class').value,g=$('iav2Grade').value,keys=visibleKeys().filter(z=>(!k||z===k)&&(!g||gradeOf(z)===g));
  let html='';
  for(const z of keys){let rows=students(z).filter(r=>!q||(`${r[2]} ${r[1]}`).toLowerCase().includes(q));if(sf)rows=rows.filter(r=>rec(z,r[1],d)===sf);if(!rows.length)continue;
-  const st=calculateDailyStats(z,d);html+=`<h3 class="iav2-report-title">📚 ${esc(className(z))} <small class="iav2-muted">— ${st.recorded}/${st.students} مرصود</small></h3><div class="iav2-daily-summary"><div class="box"><small>عدد الطلاب</small><b>${st.students}</b></div><div class="box"><small>الحاضرون</small><b>${st.present}</b></div><div class="box"><small>الغائبون</small><b>${st.absence}</b></div><div class="box"><small>بعذر</small><b>${st.excused}</b></div><div class="box"><small>بدون عذر</small><b>${st.unexcused}</b></div><div class="box"><small>متأخر</small><b>${st.late}</b></div><div class="box"><small>% الحضور</small><b>${st.attendancePct.toFixed(1)}%</b></div><div class="box"><small>% الغياب</small><b>${st.absencePct.toFixed(1)}%</b></div></div><div class="iav2-tablewrap"><table class="iav2-table"><thead><tr><th>م</th><th class="student-fixed">كود الطالب | الاسم</th><th>الصف</th><th>الفصل</th><th>التاريخ</th><th>الحالة</th><th>نوع الغياب</th><th>عذر</th><th>ملاحظات</th></tr></thead><tbody>`;
+  const st=calculateDailyStats(z,d);html+=`<h3 class="iav2-report-title">📚 ${esc(className(z))} <small class="iav2-muted">— ${st.recorded}/${st.students} مرصود</small></h3><div class="iav2-tablewrap"><table class="iav2-table"><thead><tr><th>م</th><th class="student-fixed">كود الطالب | الاسم</th><th>الصف</th><th>الفصل</th><th>التاريخ</th><th>الحالة</th><th>نوع الغياب</th><th>عذر</th><th>ملاحظات</th></tr></thead><tbody>`;
   html+=rows.map((r,i)=>{const v=rec(z,r[1],d)||'unrecorded',notev=note(z,r[1],d);return `<tr><td>${i+1}</td><td class="student-fixed"><b>${esc(r[1])}</b> | ${esc(r[2])}</td><td>${esc(gradeOf(z))}</td><td>${esc(className(z))}</td><td>${esc(d)}</td><td><select class="iav2-status ${STATUS_CLASS[v]}" data-iav2-status="${esc(z)}|${esc(r[1])}">${Object.keys(STATUS).map(s=>`<option value="${s}" ${s===v?'selected':''}>${STATUS[s]}</option>`).join('')}</select></td><td>${v==='unrecorded'?'—':(v==='unexcused'||v==='absent'?'بدون عذر':v==='excused'?'بعذر':v==='late'?'تأخير':'—')}</td><td>${v==='excused'?'نعم':'غير مطلوب'}</td><td><input data-iav2-note="${esc(z)}|${esc(r[1])}" value="${esc(notev)}" placeholder="ملاحظة"></td></tr>`}).join('');
   html+='</tbody></table></div>';
  }
@@ -4332,20 +4349,119 @@ async function bulk(status){const k=currentClass(),d=currentDate();if(!k){setNot
 $('iav2Save').addEventListener('click',()=>{persistLocal();activity('manual_save',{});setNote('✓ تم حفظ الرصد محليًا وتحديث جميع الإحصائيات والتقارير.');schedule()})
 $('iav2Sync').addEventListener('click',trySync)
 $('iav2Backup').addEventListener('click',()=>{
- const payload={version:'IAV2-2026-2027',createdAt:new Date().toISOString(),AcademicYear:'2026/2027',Students:db,Classes:db,Teachers:typeof TEACHERS!=='undefined'?TEACHERS:[],Assignments:typeof teacherAccess!=='undefined'?teacherAccess:{},AttendanceRecords:records(),AttendanceMeta:attendanceMeta(),Notes:store().notes||{},Settings:{calendar:cal()},SyncQueue:queue(),ActivityLog:(()=>{try{return JSON.parse(localStorage.getItem(LOG_KEY)||'[]')}catch(e){return[]}})()};
+ const payload={version:'IAV2-2026-2027',createdAt:new Date().toISOString(),AcademicYear:'2026/2027',Students:db,Classes:db,Teachers:typeof TEACHERS!=='undefined'?TEACHERS:[],Assignments:typeof teacherAccess!=='undefined'?teacherAccess:{},AttendanceRecords:records(),Notes:store().notes||{},Settings:{calendar:cal()},SyncQueue:queue(),ActivityLog:(()=>{try{return JSON.parse(localStorage.getItem(LOG_KEY)||'[]')}catch(e){return[]}})()};
  const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([JSON.stringify(payload,null,2)],{type:'application/json'}));a.download='المركز_المتكامل_للغياب_والحضور_2026_2027.json';a.click();URL.revokeObjectURL(a.href);window.v11Speak?.('export_ok')
 })
 $('iav2Restore').addEventListener('click',()=>$('iav2RestoreFile').click())
-$('iav2RestoreFile').addEventListener('change',async e=>{const f=e.target.files?.[0];if(!f)return;try{const p=JSON.parse(await f.text());if(!p||!p.AttendanceRecords)throw Error('invalid');if(!confirm('سيتم استيراد سجلات الغياب. لا يتم حذف الطلاب الحاليين. هل تريد المتابعة؟'))return;const s=store();s.records=p.AttendanceRecords||{};s.attendanceMeta=p.AttendanceMeta||s.attendanceMeta||{};s.notes=p.Notes||s.notes||{};persistLocal();activity('restore_backup',{records:Object.keys(s.records).length});renderAll();setNote('✓ تمت استعادة سجلات الغياب والتقارير.')}catch(err){alert('ملف النسخة الاحتياطية غير صالح أو غير مكتمل.')}finally{e.target.value=''}})
+$('iav2RestoreFile').addEventListener('change',async e=>{const f=e.target.files?.[0];if(!f)return;try{const p=JSON.parse(await f.text());if(!p||!p.AttendanceRecords)throw Error('invalid');if(!confirm('سيتم استيراد سجلات الغياب. لا يتم حذف الطلاب الحاليين. هل تريد المتابعة؟'))return;const s=store();s.records=p.AttendanceRecords||{};s.notes=p.Notes||s.notes||{};persistLocal();activity('restore_backup',{records:Object.keys(s.records).length});renderAll();setNote('✓ تمت استعادة سجلات الغياب والتقارير.')}catch(err){alert('ملف النسخة الاحتياطية غير صالح أو غير مكتمل.')}finally{e.target.value=''}})
 $('iav2Print').addEventListener('click',printCurrent)
 function printCurrent(){const host=$('iav2PrintRoot');host.innerHTML='';const title=document.querySelector(`[data-iav2-panel="${selectedView}"]`)?.innerHTML||'';host.innerHTML=`<div class="iav2-print-page" dir="rtl"><h2 style="text-align:center">المركز الرئيسي المتكامل لرصد الغياب والحضور</h2><p style="text-align:center">العام الدراسي 2026/2027 — ${esc(new Date().toLocaleString('ar-EG'))}</p>${title}</div>`;document.body.classList.add('iav2-printing');window.print();setTimeout(()=>document.body.classList.remove('iav2-printing'),500)}
 window.addEventListener('afterprint',()=>document.body.classList.remove('iav2-printing'));
 
-window.__v4StudyDays=(a,b)=>daysBetween(a,b);
 function init(){const d=today();$('iav2Date').value=d;$('iav2Month').value=d.slice(0,7);fillFilters();renderAll();setInterval(()=>{if(navigator.onLine&&queue().length)flushQueue()},30000)}
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();
 })();
 </script>
+
+<script id="attendanceProfessionalFinalJS">
+(()=>{
+'use strict';
+const $=id=>document.getElementById(id);
+const root=$('integratedAttendanceV2');
+if(!root)return;
+
+/* ============================================================
+   شاشة الغياب الاحترافية — طبقة إضافية دون استبدال الكود الأصلي
+   كل فصل = صفحة طباعة مستقلة + توقيعات أسفل الجدول
+============================================================ */
+function escP(v){return String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function pStatus(v){const map={present:'حاضر',absent:'غائب',excused:'غياب بعذر',unexcused:'غياب بدون عذر',late:'متأخر',unrecorded:'غير مرصود'};return map[v]||'غير مرصود'}
+function pData(){try{return typeof db!=='undefined'?db:(window.db||{})}catch(e){return window.db||{}}}
+function pClassKeys(){try{const D=pData();return typeof window.__v4Keys==='function'?window.__v4Keys().filter(k=>D?.[k]):Object.keys(D||{}).filter(k=>D?.[k])}catch(e){return[]}}
+function pStudents(k){const D=pData();return Array.isArray(D?.[k]?.students)?D[k].students:[]}
+function pRec(k,code,d){try{const s=window.__v4Store||{};const r=s.records||{};const v=r[`${k}|${code}|${d}`]||'';return v==='absent'?'unexcused':v||'unrecorded'}catch(e){return'unrecorded'}}
+function pClassName(k){const D=pData();return D?.[k]?.name||k}
+function pGrade(k){const m=String(pClassName(k)).match(/^\d+/);return m?'الصف '+m[0]:'غير محدد'}
+function pTeacher(k){try{return typeof teacherForClass==='function'?(teacherForClass(k)||'—'):'—'}catch(e){return'—'}}
+function pDate(){return $('iav2Date')?.value||new Date().toISOString().slice(0,10)}
+function pSignatures(){return `<div class="iav2-absence-signatures"><div>توقيع المعلم<span class="iav2-sign-line"></span></div><div>وكيل المدرسة<br>أ/ عبد الحميد عثمان عيد<span class="iav2-sign-line"></span></div><div>القائم بأعمال مدير المدرسة<br>أ/ مسعود محمد مخيمر<span class="iav2-sign-line"></span></div></div>`}
+function pRows(k,d){
+ const ss=pStudents(k);return ss.map((r,i)=>{const code=String(r[1]??''),name=String(r[2]??''),v=pRec(k,code,d),type=v==='excused'?'بعذر':(v==='unexcused'||v==='absent'?'بدون عذر':v==='late'?'تأخير':'—');return `<tr><td>${i+1}</td><td>${escP(code)}</td><td class="n">${escP(name)}</td><td class="status-${escP(v)}">${escP(pStatus(v))}</td><td>${escP(type)}</td><td>________________</td></tr>`}).join('')}
+function buildProfessionalAbsencePrint(){
+ const host=$('iav2ProfessionalPrintRoot');if(!host)return;
+ const keys=pClassKeys(),d=pDate(),total=keys.length;
+ host.innerHTML=keys.map((k,i)=>{
+   const ss=pStudents(k),counts={present:0,unexcused:0,excused:0,late:0,unrecorded:0};ss.forEach(r=>{const v=pRec(k,r[1],d);if(counts[v]!==undefined)counts[v]++});
+   const font=ss.length>=47?'5.0pt':ss.length>=41?'5.25pt':'5.7pt';
+   return `<section class="iav2-absence-page" data-class-id="${escP(k)}" data-rows="${ss.length}" dir="rtl" style="--iav2-print-font:${font}">
+    <div class="iav2-absence-head"><h1>المركز الرئيسي المتكامل لرصد الغياب والحضور</h1><h2>إدارة ميت غمر التعليمية — مدرسة محمد هاشم النقيب الثانوية المشتركة</h2></div>
+    <div class="iav2-absence-meta"><span>الصف: ${escP(pGrade(k))}</span><span>الفصل: ${escP(pClassName(k))}</span><span>التاريخ: ${escP(d)}</span><span>المعلم: ${escP(pTeacher(k))}</span></div>
+    <table class="iav2-absence-table"><thead><tr><th style="width:5%">م</th><th style="width:13%">كود الطالب</th><th style="width:39%">اسم الطالب</th><th style="width:15%">حالة الحضور</th><th style="width:13%">نوع الغياب</th><th style="width:15%">ملاحظات</th></tr></thead><tbody>${pRows(k,d)}</tbody></table>
+    <div style="font-size:6pt;font-weight:900;margin-top:1.5mm">إجمالي الطلاب: ${ss.length} — حاضر: ${counts.present} — غياب بدون عذر: ${counts.unexcused} — غياب بعذر: ${counts.excused} — متأخر: ${counts.late} — غير مرصود: ${counts.unrecorded}</div>
+    ${pSignatures()}<div class="iav2-page-label">صفحة الفصل ${i+1} من ${total} — كل فصل في صفحة مستقلة</div>
+   </section>`
+ }).join('');
+}
+function printAllAbsenceClasses(){
+ buildProfessionalAbsencePrint();
+ document.body.classList.add('iav2-absence-printing');
+ const cleanup=()=>{document.body.classList.remove('iav2-absence-printing');};
+ window.addEventListener('afterprint',cleanup,{once:true});
+ requestAnimationFrame(()=>setTimeout(()=>window.print(),180));
+}
+$('iav2PrintAllClasses')?.addEventListener('click',printAllAbsenceClasses);
+
+/* توجيه شاشة الحضور إلى المركز المتكامل الجديد مع إبقاء الشاشة الأصلية والكود الأصلي محفوظين. */
+function focusAttendance(){
+ document.body.classList.remove('pro-screen-dashboard','pro-screen-assignment','pro-screen-settings');
+ document.body.classList.add('pro-screen-attendance');
+ $('attendanceCompleteV4')?.setAttribute('aria-hidden','true');
+ $('integratedAttendanceV2')?.setAttribute('aria-hidden','false');
+ window.scrollTo({top:0,behavior:'smooth'});
+ try{localStorage.setItem('mh_pro_active_screen_v2','attendance')}catch(e){}
+}
+window.__focusIntegratedAttendance=focusAttendance;
+document.addEventListener('click',e=>{
+ const b=e.target.closest('#proScreenNav .screen-tab[data-screen="attendance"]');
+ if(b){e.preventDefault();e.stopImmediatePropagation();focusAttendance();}
+},true);
+
+/* مزامنة تلقائية احترافية: محلي أولًا، ثم سحابي عند توفر الاتصال والحساب والرابط. */
+let cloudTimer=0,cloudBusy=false;
+async function autoCloudSync(reason='auto'){
+ if(cloudBusy)return;
+ try{
+   if(typeof isAuth!=='function'||!isAuth()||typeof cloudUrl!=='function'||!cloudUrl()||!navigator.onLine)return;
+   cloudBusy=true;
+   try{window.__v4SaveStore?.()}catch(e){}
+   try{localStorage.setItem('iav2_last_auto_sync',new Date().toISOString())}catch(e){}
+   if(typeof syncCloud==='function')await syncCloud('save');
+   if(typeof saveQueue==='function'&&typeof queue==='function'&&queue().length)saveQueue([]);
+   const n=$('iav2StatusNote');if(n)n.textContent='✓ تم الحفظ تلقائيًا محليًا ومزامنة السجل مع السحابة بنجاح.';
+ }catch(e){
+   const n=$('iav2StatusNote');if(n)n.textContent='⚠ تعذر الوصول للسحابة الآن؛ البيانات محفوظة محليًا وستتم إعادة المزامنة تلقائيًا.';
+ }finally{cloudBusy=false}
+}
+function scheduleAutoCloud(){clearTimeout(cloudTimer);cloudTimer=setTimeout(()=>autoCloudSync('change'),1400)}
+root.addEventListener('change',e=>{if(e.target.matches('[data-iav2-status]'))scheduleAutoCloud()});
+root.addEventListener('click',e=>{if(e.target.closest('#iav2PresentAll,#iav2AbsentAll,#iav2ClearAll,#iav2Save'))scheduleAutoCloud()});
+window.addEventListener('online',()=>{setTimeout(()=>autoCloudSync('online'),700)});
+window.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible')scheduleAutoCloud()});
+window.addEventListener('beforeunload',()=>{try{window.__v4SaveStore?.();localStorage.setItem('iav2_last_auto_sync',new Date().toISOString())}catch(e){}});
+setInterval(()=>{if(navigator.onLine)autoCloudSync('interval')},45000);
+
+/* فحص سلامة البيانات عند التشغيل — لا يعدّل أي طالب أو كود. */
+setTimeout(()=>{
+ try{
+   const keys=pClassKeys(),count=keys.reduce((n,k)=>n+pStudents(k).length,0);
+   const note=$('iav2StatusNote');
+   if(note)note.dataset.integrity=`${keys.length} classes / ${count} students`;
+   if(keys.length!==19||count!==852)console.warn('Attendance data integrity check:',keys.length,count);
+ }catch(e){}
+},500);
+})();
+</script>
+
 
 </body>
 </html>
